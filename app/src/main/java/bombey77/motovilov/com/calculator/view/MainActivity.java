@@ -1,7 +1,9 @@
-package bombey77.motovilov.com.calculator;
+package bombey77.motovilov.com.calculator.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import bombey77.motovilov.com.calculator.R;
 
 public class MainActivity extends AppCompatActivity {
 
