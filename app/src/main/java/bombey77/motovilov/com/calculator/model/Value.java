@@ -9,4 +9,5 @@ public interface Value {
     Object getFirstValue();
 
     Object getSecondValue();
+
 }
