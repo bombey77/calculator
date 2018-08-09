@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Controller controller = new Controller(bigDecimalValue);
 
     private boolean functionButton = false;
+    private BigDecimalValue.OperationType operationType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,48 +95,53 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.btn0:
-                addDigets(getResources().getString(R.string.btn_zero));
+                functionButton = false;
+                addDigit(getResources().getString(R.string.btn_zero));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn1:
                 functionButton = false;
-                addDigets(getResources().getString(R.string.btn_one));
+                addDigit(getResources().getString(R.string.btn_one));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn2:
                 functionButton = false;
-                addDigets(getResources().getString(R.string.btn_two));
+                addDigit(getResources().getString(R.string.btn_two));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn3:
                 functionButton = false;
-                addDigets(getResources().getString(R.string.btn_three));
+                addDigit(getResources().getString(R.string.btn_three));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn4:
                 functionButton = false;
-                addDigets(getResources().getString(R.string.btn_four));
+                addDigit(getResources().getString(R.string.btn_four));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn5:
                 functionButton = false;
-                addDigets(getResources().getString(R.string.btn_five));
+                addDigit(getResources().getString(R.string.btn_five));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn6:
-                addDigets(getResources().getString(R.string.btn_six));
+                functionButton = false;
+                addDigit(getResources().getString(R.string.btn_six));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn7:
-                addDigets(getResources().getString(R.string.btn_seven));
+                functionButton = false;
+                addDigit(getResources().getString(R.string.btn_seven));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn8:
-                addDigets(getResources().getString(R.string.btn_eight));
+                functionButton = false;
+                addDigit(getResources().getString(R.string.btn_eight));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btn9:
-                addDigets(getResources().getString(R.string.btn_nine));
+                functionButton = false;
+                addDigit(getResources().getString(R.string.btn_nine));
                 editText.setText(getStringBufferResult());
                 break;
             case R.id.btnPlusMinus:
@@ -145,33 +151,31 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnEquals:
                 break;
 
-
             case R.id.btnDivide:
             case R.id.btnSubtract:
             case R.id.btnMinus:
-            case R.id.btnPlus:
-//                Controller controller = new Controller(bigDecimalValue);
-//                controller.operation(new BigDecimal(editText.getText().toString()),
-//            controller.operation(new BigDecimal(10),
-//                    BigDecimalValue.OperationType.ADD);
-
                 if (functionButton == true) return;
                 functionButton = true;
                 clearStringBuffer();
-                System.out.println("----------------- ADD pressed ---------------");
-
-                MyAsyncTask myAsyncTask = new MyAsyncTask();
-                myAsyncTask.execute();
-//            myAsyncTask.doInBackground("10");
-//            myAsyncTask.onPostExecute("11");
-            break;
+                MyAsyncTask subtract = new MyAsyncTask();
+                subtract.execute();
+                operationType = BigDecimalValue.OperationType.SUBTRACT;
+                break;
+            case R.id.btnPlus:
+                if (functionButton == true) return;
+                functionButton = true;
+                clearStringBuffer();
+                MyAsyncTask add = new MyAsyncTask();
+                add.execute();
+                operationType = BigDecimalValue.OperationType.ADD;
+                break;
         }
     }
 
     /**
-    Add new digets afrer any numeric button was pressed
+    Add a new digit after any numeric button was pressed
      */
-    public StringBuffer addDigets(String number) {
+    public StringBuffer addDigit(String number) {
         stringBufferResult.append(number);
         return stringBufferResult;
     }
@@ -185,19 +189,19 @@ public class MainActivity extends AppCompatActivity {
         return stringBufferResult;
     }
 
-    /*
-    Create new thread for mathematical operations
+    /**
+    Create a new thread for mathematical operations
      */
     class MyAsyncTask extends AsyncTask<Void, Void, BigDecimal> {
 
         /**
-         Send digits and operationType to controller
+         Send digit and operationType to controller
          *@return result from controller
          */
         @Override
         protected BigDecimal doInBackground(Void... voids) {
             controller.operation(new BigDecimal(editText.getText().toString()),
-                    BigDecimalValue.OperationType.ADD);
+                    operationType);
             return controller.getResult();
         }
 

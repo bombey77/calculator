@@ -14,10 +14,16 @@ public class Calculator {
     public BigDecimal calculate() {
         BigDecimalMathematicalOperations mathematicalOperations = new BigDecimalMathematicalOperations();
         BigDecimal res = null;
-        BigDecimalValue.OperationType operationType = (BigDecimalValue.OperationType) bigDecimalValue.getKeeperValuesByOperationType();
+        BigDecimalValue.OperationType operationType = (BigDecimalValue.OperationType) bigDecimalValue.
+                getKeeperValuesByOperationType();
         switch (operationType) {
             case ADD:
-                res = (BigDecimal) mathematicalOperations.add(bigDecimalValue.getFirstValue(), bigDecimalValue.getSecondValue());
+                res = (BigDecimal) mathematicalOperations.add(bigDecimalValue.getFirstValue(),
+                        bigDecimalValue.getSecondValue());
+                break;
+            case SUBTRACT:
+                res = (BigDecimal) mathematicalOperations.subtract(bigDecimalValue.getFirstValue(),
+                        bigDecimalValue.getSecondValue());
                 break;
         }
         return res;

@@ -31,6 +31,7 @@ public class Controller {
             into second value and into temporary variable. Calculate first value and second value.*/
             if (bigDecimalValue.getSecondValue() == null) {
                 bigDecimalValue.setSecondValue(x);
+                bigDecimalValue.setKeeperOperationType(operationType);
                 Calculator calculator = new Calculator(bigDecimalValue);
                 setResult(calculator.calculate());
                 bigDecimalValue.setFirstValue(getResult());
