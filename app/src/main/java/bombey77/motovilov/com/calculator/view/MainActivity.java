@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean functionButton = false;
     private BigDecimalValue.OperationType operationType;
+    private BigDecimalValue.OperationType temporaryOperationType = operationType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         btnComma = (Button)findViewById(R.id.btnComma);
         btnEquals = (Button)findViewById(R.id.btnEquals);
         btnDivide = (Button)findViewById(R.id.btnDivide);
-        btnSubtract = (Button)findViewById(R.id.btnSubtract);
-        btnMinus = (Button)findViewById(R.id.btnMinus);
+        btnSubtract = (Button)findViewById(R.id.btnMultyply);
+        btnMinus = (Button)findViewById(R.id.btnSubtract);
         btnPlus = (Button)findViewById(R.id.btnPlus);
     }
 
@@ -152,22 +153,41 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.btnDivide:
+                operationType = BigDecimalValue.OperationType.DIVIDE;
+                if (functionButton == true && changeTypeOfOperation(operationType)) return;
+                functionButton = true;
+                clearStringBuffer();
+                MyAsyncTask divide = new MyAsyncTask();
+                divide.execute();
+                break;
+
+            case R.id.btnMultyply:
+                operationType = BigDecimalValue.OperationType.MULTIPLY;
+                if (functionButton == true && changeTypeOfOperation(operationType)) return;
+                functionButton = true;
+                clearStringBuffer();
+                MyAsyncTask multyply = new MyAsyncTask();
+                multyply.execute();
+                break;
+
             case R.id.btnSubtract:
-            case R.id.btnMinus:
-                if (functionButton == true) return;
+                operationType = BigDecimalValue.OperationType.SUBTRACT;     //-
+                if (functionButton == true && changeTypeOfOperation(operationType)) return;
                 functionButton = true;
                 clearStringBuffer();
                 MyAsyncTask subtract = new MyAsyncTask();
                 subtract.execute();
-                operationType = BigDecimalValue.OperationType.SUBTRACT;
+                System.out.println("--- SUBTRACT ---");
                 break;
+
             case R.id.btnPlus:
-                if (functionButton == true) return;
+                operationType = BigDecimalValue.OperationType.ADD;      //+
+                if (functionButton == true && changeTypeOfOperation(operationType)) return;  //+
                 functionButton = true;
                 clearStringBuffer();
                 MyAsyncTask add = new MyAsyncTask();
                 add.execute();
-                operationType = BigDecimalValue.OperationType.ADD;
+                System.out.println("--- PLUS ---");
                 break;
         }
     }
@@ -187,6 +207,11 @@ public class MainActivity extends AppCompatActivity {
 
     public StringBuffer getStringBufferResult() {
         return stringBufferResult;
+    }
+
+    public boolean changeTypeOfOperation(BigDecimalValue.OperationType operationType) {
+        if (this.operationType == operationType) return true;
+        return false;
     }
 
     /**

@@ -15,11 +15,11 @@ public class BigDecimalValue implements Value {
         ADD, SUBTRACT, MULTIPLY, DIVIDE
     }
 
-    public void setKeeperOperationType(OperationType operationType) {
+    public void setOperationType(OperationType operationType) {
         this.keeperValues.put(Keeper.OPERATION, operationType);
     }
 
-    public Object getKeeperValuesByOperationType() {
+    public Object getOperationType() {
         return keeperValues.get(Keeper.OPERATION);
     }
 

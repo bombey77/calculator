@@ -12,6 +12,7 @@ public class Controller {
 
     private BigDecimal result;
     private BigDecimalValue bigDecimalValue;
+    private BigDecimalValue.OperationType temporaryOperationType;
 
     public Controller(BigDecimalValue bigDecimalValue) {
         this.bigDecimalValue = bigDecimalValue;
@@ -20,24 +21,25 @@ public class Controller {
     public void operation(BigDecimal x, BigDecimalValue.OperationType operationType) {
         /*if operationType button wasn't pressed and first value is null then write this value
         into first value and into temporary variable*/
-        if (bigDecimalValue.getKeeperValuesByOperationType() == null) {
+        if (bigDecimalValue.getOperationType() == null) {
             if (bigDecimalValue.getFirstValue() == null) {
                 bigDecimalValue.setFirstValue(x);
                 setResult((BigDecimal) bigDecimalValue.getFirstValue());
             }
-            bigDecimalValue.setKeeperOperationType(operationType);
+            temporaryOperationType = operationType;
+            bigDecimalValue.setOperationType(temporaryOperationType);
         } else {
             /*if operationType button was pressed and first value not null then write this value
             into second value and into temporary variable. Calculate first value and second value.*/
             if (bigDecimalValue.getSecondValue() == null) {
                 bigDecimalValue.setSecondValue(x);
-                bigDecimalValue.setKeeperOperationType(operationType);
                 Calculator calculator = new Calculator(bigDecimalValue);
                 setResult(calculator.calculate());
                 bigDecimalValue.setFirstValue(getResult());
+                bigDecimalValue.setOperationType(operationType);
+
             }
             bigDecimalValue.setSecondValue(null);
-//            bigDecimalValue.setKeeperOperationType(null);
         }
     }
 
