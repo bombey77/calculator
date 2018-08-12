@@ -119,6 +119,7 @@
             android:text="/" />
 
         <Button
+            android:contentDescription="7"
             android:onClick="onClick"
             android:id="@+id/btn7"
             android:layout_width="wrap_content"
@@ -130,6 +131,7 @@
             android:text="7" />
 
         <Button
+            android:contentDescription="8"
             android:onClick="onClick"
             android:id="@+id/btn8"
             android:layout_width="wrap_content"
@@ -141,6 +143,7 @@
             android:text="8" />
 
         <Button
+            android:contentDescription="9"
             android:onClick="onClick"
             android:id="@+id/btn9"
             android:layout_width="wrap_content"
@@ -163,6 +166,7 @@
             android:text="*" />
 
         <Button
+            android:contentDescription="4"
             android:onClick="onClick"
             android:id="@+id/btn4"
             android:layout_width="wrap_content"
@@ -174,6 +178,7 @@
             android:text="4" />
 
         <Button
+            android:contentDescription="5"
             android:onClick="onClick"
             android:id="@+id/btn5"
             android:layout_width="wrap_content"
@@ -185,6 +190,7 @@
             android:text="5" />
 
         <Button
+            android:contentDescription="6"
             android:onClick="onClick"
             android:id="@+id/btn6"
             android:layout_width="wrap_content"
@@ -196,6 +202,7 @@
             android:text="6" />
 
         <Button
+            android:contentDescription="4"
             android:onClick="onClick"
             android:id="@+id/btnSubtract"
             android:layout_width="wrap_content"
@@ -207,6 +214,7 @@
             android:text="-" />
 
         <Button
+            android:contentDescription="1"
             android:onClick="onClick"
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
@@ -218,6 +226,7 @@
             android:text="1" />
 
         <Button
+            android:contentDescription="2"
             android:onClick="onClick"
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
@@ -229,6 +238,7 @@
             android:text="2" />
 
         <Button
+            android:contentDescription="3"
             android:onClick="onClick"
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
@@ -251,6 +261,7 @@
             android:text="+" />
 
         <Button
+            android:contentDescription="6"
             android:onClick="onClick"
             android:id="@+id/btnPlusMinus"
             android:layout_width="wrap_content"
@@ -262,6 +273,7 @@
             android:text="±" />
 
         <Button
+            android:contentDescription="0"
             android:onClick="onClick"
             android:id="@+id/btn0"
             android:layout_width="wrap_content"
@@ -273,6 +285,7 @@
             android:text="0" />
 
         <Button
+            android:contentDescription="."
             android:onClick="onClick"
             android:id="@+id/btnComma"
             android:layout_width="wrap_content"
@@ -281,7 +294,7 @@
             android:layout_columnWeight="1"
             android:layout_row="6"
             android:layout_rowWeight="1"
-            android:text="," />
+            android:text="." />
 
         <Button
             android:onClick="onClick"
