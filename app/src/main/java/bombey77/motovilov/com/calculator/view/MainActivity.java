@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import bombey77.motovilov.com.calculator.R;
+import bombey77.motovilov.com.calculator.model.Values;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,11 +15,16 @@ public class MainActivity extends AppCompatActivity {
     private Button btnPercent, btnRoot, btnXSquare, btnHafXSquare, btnCE, btnC, btnClean, btnPlusMinus, btnComma,
             btnEquals, btnDivide, btnSubtract, btnMinus, btnPlus;
 
+    private Values values;
+//    private Values.OperationType operationType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        values = new Values();
+
 
         editText = findViewById(R.id.editText);
         editText.setText(getResources().getString(R.string.btn_zero));
